@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Use a ⭐️ to indicate a breaking change.
 
+## [3.6.5] - 2025-04-25
+
+### Added
+
+- Added `PrimaryCategoryID` to `Merchant`
+
 ## [3.6.4] - 2025-01-02
 
 ### Added
