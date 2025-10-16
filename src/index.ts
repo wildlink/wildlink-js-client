@@ -171,6 +171,12 @@ export class WildlinkClient {
     }
   }
 
+  /**
+    * Device XID is a table that maps a tracking code with a device ID
+    * Device XID has a 1-to-1 relationship with a device ID whereas tracking code has a 1-to-many relationship with a device ID
+    * We want to update that whenever we update the tracking code
+    * @see {@link https://www.notion.so/Device-XID-28073e66ea1a80e29a41f611f15e999d} for more details
+    */
   public async updateDeviceXID(
     source: DeviceXIDSource,
     value: string,
