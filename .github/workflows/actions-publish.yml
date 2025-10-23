@@ -5,27 +5,25 @@ on:
       master
     paths-ignore:
       - ".github/**"
+
 jobs:
   push:
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Collect Secrets
-        id: op-load-secret
-        uses: 1password/load-secrets-action@v2
-        with:
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SA_NPM_TOOLING }}
-          NPM_TOKEN: op://p7ggbiqtkwsqpwbfxyslrgl46u/tctdu656f2fh2pawg4g34qxbnq/credential
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '14.19.3'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Update npm to latest
+        run: npm install -g npm@latest
 
       - name: Cache Node Modules
         id: cache-node-modules
@@ -44,5 +42,3 @@ jobs:
 
       - name: Publish to NPM
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
