@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # - name: Collect Secrets
       #   id: op-load-secret
-      #   uses: 1password/load-secrets-action@v2
+      #   uses: 1password/load-secrets-action@v3
       #   with:
       #     export-env: true
       #   env:
