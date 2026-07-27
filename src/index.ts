@@ -30,7 +30,7 @@ import {
 } from './helpers/constants';
 
 // we track the version this way because importing the package.json causes issues
-export const VERSION = '3.6.5';
+export const VERSION = '3.6.6';
 
 export class WildlinkClient {
   protected applicationId: number;
@@ -163,9 +163,16 @@ export class WildlinkClient {
         body: JSON.stringify(body),
       });
 
-      this.deviceToken = response.result.DeviceToken;
-      this.deviceKey = response.result.DeviceKey;
-      this.deviceId = response.result.DeviceID;
+      const device = response.result;
+      if (!device?.DeviceToken || !device?.DeviceKey) {
+        return Promise.reject(
+          ApplicationErrorResponse('createDevice received an invalid device payload'),
+        );
+      }
+
+      this.deviceToken = device.DeviceToken;
+      this.deviceKey = device.DeviceKey;
+      this.deviceId = device.DeviceID;
     } catch (reason) {
       return Promise.reject(reason);
     }

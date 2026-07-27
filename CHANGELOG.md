@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Use a ⭐️ to indicate a breaking change.
 
+## [3.6.6] - 2026-07-27
+
+### Fixed
+
+- `createDevice()` no longer silently succeeds with an empty/undefined `DeviceToken`/`DeviceKey` when the `/v2/device` response resolves without them — it now rejects, so callers can detect and retry instead of persisting a non-functional device.
+- `request()` now rejects when a response body fails to parse as JSON, even when the HTTP status is 200 (e.g. a captive-portal login page served in place of the expected API response). Previously this silently resolved with `result: false`, which downstream code was never designed to handle.
+
 ## [3.6.5] - 2025-04-25
 
 ### Added
