@@ -4,12 +4,6 @@ export interface ActiveDomain {
   Merchant: ActiveDomainMerchant;
 }
 
-export interface AlternateDomain {
-  Domain: string;
-  Company: string;
-  AlternateMerchantIDs: number[];
-}
-
 const PERCENTAGE = 'PERCENTAGE';
 const FLAT = 'FLAT';
 

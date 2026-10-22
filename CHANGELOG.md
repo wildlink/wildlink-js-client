@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Use a ⭐️ to indicate a breaking change.
 
+## [4.0.0] - 2026-10-22
+
+### Removed
+
+- ⭐️ Removed `getAlternates` and the `AlternateDomain` type; the `alternative-domains` API endpoint has been deprecated
+
 ## [3.6.5] - 2025-04-25
 
 ### Added
